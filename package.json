@@ -1,0 +1,11 @@
+{
+  "name": "node-currency",
+  "version": "1.0.0",
+  "description": "A simple node app that converts USD to GBP using the current exchange rate",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Paul McBride",
+  "license": "ISC"
+}
