@@ -1,12 +1,45 @@
-#Con-Currency
+# Con-Currency
 
-This is my first attempt at a command line node.js app. I struggled to wrap my head around the concurrent style of writing code.
+A simple command line app that uses the current exchange rate from http://fixer.io/ to to convert any currency for you.
 
-##Usage
+## Usage
 
 Using the app is fairly straight forward. Here is an example of converting 10 GBP to USD
 
 `node index.js 10 gbp usd`
 
-Error handling is a little non-existent. So if you pass a value which is no a valid currency code, bad things will happen.
-I'd be very keen to hear feedback!
+## Suported Currencies
+
+- AUD
+- BGN
+- BRL
+- CAD
+- CHF
+- CNY
+- CZK
+- DKK
+- GBP
+- HKD
+- HRK
+- HUF
+- IDR
+- ILS
+- INR
+- JPY
+- KRW
+- MXN
+- MYR
+- NOK
+- NZD
+- PHP
+- PLN
+- RON
+- RUB
+- SEK
+- SGD
+- THB
+- TRY
+- USD
+- ZAR
+
+This app was build using Fetch and RxJs

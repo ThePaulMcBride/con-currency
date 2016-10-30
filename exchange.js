@@ -1,33 +1,14 @@
-var http = require('http');
+const http = require('http');
+const fetch = require('node-fetch');
+const Rx = require('rxjs/Rx');
 
-var getRates = function(currentCurrency, desiredCurrency, value)
+var getRates = function(baseCurrency)
 {
-    http.get('http://api.fixer.io/latest?base=' + currentCurrency, function(res){
+  var baseUrl = 'http://api.fixer.io/latest?base=' + baseCurrency;
 
-        var body = ''; // Will contain the final response
-
-        // Received data is a buffer.
-        // Adding it to our body
-        res.on('data', function(data){
-            body += data;
-        });
-
-        // After the response is completed, parse it and log it to the console
-        res.on('end', function() {
-            var parsed = JSON.parse(body);
-            var rates = parsed.rates;
-
-            if(!currentCurrency || !value || !desiredCurrency)
-            {
-                console.error('No value or currency provided.');
-            }
-
-            var desiredValue = value * rates[desiredCurrency];
-
-            var result = value + ' ' + currentCurrency + ' is worth ' + desiredValue + ' ' + desiredCurrency;
-
-            console.log(result);
-        });
+  return Rx.Observable.fromPromise(fetch(baseUrl))
+    .flatMap((response) => {
+      return Rx.Observable.fromPromise(response.json());
     });
 }
 
